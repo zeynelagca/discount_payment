@@ -3,7 +3,7 @@
     'name': "Website Instant Discount",
     'summary': """""",
     'description': """""",
-    'category': 'Uncategorized',
+    'category': 'Sales',
     'version': '0.2',
     "author": 'Zeynel',
     "website": 'https://coflow.com.tr',
