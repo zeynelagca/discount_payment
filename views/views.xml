@@ -1,0 +1,43 @@
+<odoo>
+
+    <record model="ir.ui.view" id="view_payment_discount">
+        <field name="name">payment.acquirer.discount</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[1]" position="inside">
+                <page string="Discount">
+    				<group>
+    					<field name="discount" />
+    					<field name="product_discount" />
+    				</group>
+    			</page>
+            </xpath>
+	    </field>
+    </record>
+
+    <template name="Payment Costs" id="payment_cost" inherit_id="website_sale.total">
+        <xpath expr="//tr[@id='order_total_untaxed']" position="before">
+            <tr id="order_payment">
+              <td class="text-right noborder text-muted">Discount:</td>
+              <td class="text-xl-right noborder text-muted">
+                   <span t-field="website_sale_order.payment_discount" class="oe_currency_value"/>
+              </td>
+            </tr>
+        </xpath>
+    </template>
+
+    <record id="product_product_inherit_payment_discount" model="ir.ui.view">
+        <field name="name">product.product.inherit.payment</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']" position="inside">
+                <div modifiers="{}">
+                    <field name="is_payment" modifiers="{}"/>
+                    <label for="is_payment" modifiers="{}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
